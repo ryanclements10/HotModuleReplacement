@@ -5,7 +5,7 @@ module.exports = {
   mode: 'development',
   entry: {
          app: './src/index.js',
-         print: './src/print.js',
+         
       },
       devtool: 'inline-source-map',
          devServer: {
@@ -13,7 +13,16 @@ module.exports = {
            },
            devServer: {
                 contentBase: './dist',
+                hot: true,
                },
+               module: {
+                     rules: [
+                      {
+                         test: /\.css$/,
+                         use: ['style-loader', 'css-loader'],
+                       },
+                     ],
+                   },
   plugins: [
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
              new HtmlWebpackPlugin({
